@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ihmproject.Controllers.CommandeContainerController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="744.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: white;" />
+      <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white;" text="Search" />
+      <TableView layoutX="419.0" layoutY="98.0" prefHeight="620.0" prefWidth="300.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn prefWidth="100.0" text="Number" />
+          <TableColumn prefWidth="100.0" text="Date" />
+            <TableColumn prefWidth="100.0" text="Condition" />
+        </columns>
+      </TableView>
+      <Button layoutX="530.0" layoutY="737.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Valide" />
+      <TextField layoutX="103.0" layoutY="122.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" />
+      <TextField layoutX="103.0" layoutY="211.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" />
+      <Label layoutX="44.0" layoutY="134.0" text="Name :" />
+      <Label layoutX="44.0" layoutY="224.0" text="Quantity :" />
+      <Button layoutX="26.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Remove" />
+      <Button layoutX="128.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Edit" />
+      <Button layoutX="282.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Add items" />
+      <TableView layoutX="9.0" layoutY="301.0" prefHeight="350.0" prefWidth="400.0">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Name" />
+          <TableColumn prefWidth="200.0" text="Quantity" />
+        </columns>
+      </TableView>
+      <Button layoutX="255.0" layoutY="172.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Add" />
+   </children>
 </AnchorPane>

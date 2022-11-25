@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <ListView layoutX="50.0" layoutY="-26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="744.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: white;" />
+      <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white;" text="Search" />
+      <TableView layoutX="46.0" layoutY="100.0" prefHeight="250.0" prefWidth="650.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn prefWidth="162.5" text="Name" />
+          <TableColumn prefWidth="162.5" text="Id" />
+            <TableColumn prefWidth="162.5" text="Price" />
+            <TableColumn prefWidth="162.5" text="Stock" />
+        </columns>
+      </TableView>
+      <Button layoutX="61.0" layoutY="370.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View Details" />
+      <Label layoutX="194.0" layoutY="376.0" prefHeight="18.0" prefWidth="62.0" text="Sale price :" />
+      <TextField layoutX="262.0" layoutY="373.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
+      <Label layoutX="355.0" layoutY="377.0" prefHeight="18.0" prefWidth="62.0" text="Quantity :" />
+      <Spinner layoutX="418.0" layoutY="374.0" prefHeight="22.0" prefWidth="64.0" style="-fx-background-color: white;" />
+      <Button layoutX="554.0" layoutY="366.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add to cart" />
+      <TableView layoutX="46.0" layoutY="423.0" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn prefWidth="162.5" text="Name" />
+          <TableColumn prefWidth="162.5" text="Price" />
+            <TableColumn prefWidth="162.5" text="Quantity" />
+            <TableColumn prefWidth="162.5" text="Total" />
+        </columns>
+      </TableView>
+      <Button layoutX="61.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View items" />
+      <TextField layoutX="200.0" layoutY="741.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
+      <Button layoutX="262.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Quantity" />
+      <Button layoutX="417.0" layoutY="733.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Check out">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="579.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove" />
+   </children>
 </AnchorPane>
