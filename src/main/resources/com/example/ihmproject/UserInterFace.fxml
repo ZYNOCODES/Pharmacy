@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="265.0">
+         <children>
+            <VBox alignment="BASELINE_CENTER" prefHeight="800.0" prefWidth="265.0" style="-fx-background-color: #90CC6E;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView cache="true" fitHeight="75.0" fitWidth="85.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../photos/logo.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="TOP_CENTER" prefHeight="45.0" prefWidth="156.0" style="-fx-font-family: po;" text="Pharmacy" textAlignment="CENTER" textFill="#389700">
+                           <font>
+                              <Font name="Bookshelf Symbol 7" size="30.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button id="CaisseBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Caisse" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button id="StockBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Stock" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button id="MedBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Medicament" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button id="VenteBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Vente" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button id="ComBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Commande" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button id="LOGOUT" mnemonicParsing="false" style="-fx-background-color: #389700; -fx-padding: 8;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                  </Button>
+               </children></VBox>
+         </children>
+      </Pane>
+      <Pane id="userProcessContainer" prefHeight="800.0" prefWidth="735.0" />
+   </children>
+</HBox>
