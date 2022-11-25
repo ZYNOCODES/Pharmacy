@@ -1,29 +1,38 @@
 package com.example.ihmproject.Models;
 
-import javafx.scene.layout.Pane;
+import com.example.ihmproject.Containers.*;
+import com.example.ihmproject.Controllers.UserInterFaceController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 
 public class UserInterFaceModel {
-    public void showCaisseContainer(Pane userProcessContainer, Pane CaisseContainer) {
-        userProcessContainer.getChildren().clear();
-        userProcessContainer.getChildren().add(CaisseContainer);
+    public void showCaisseContainer(BorderPane MainContainer) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(UserInterFaceController.class.getResource("ihmproject/CaisseContainer.fxml"));
+        MainContainer = loader.load();
+        MainContainer.setCenter(MainContainer);
     }
 
-    public void showStockContainer(Pane userProcessContainer, Pane StockContainer) {
-        userProcessContainer.getChildren().clear();
-        userProcessContainer.getChildren().add(StockContainer);
+    public void showStockContainer(BorderPane MainContainer) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(UserInterFaceController.class.getResource("ihmproject/StockContainer.fxml"));
+        MainContainer = loader.load();
+        MainContainer.setCenter(MainContainer);
     }
-    public void showMedicamentContainer(Pane userProcessContainer, Pane MedicamentContainer) {
-        userProcessContainer.getChildren().clear();
-        userProcessContainer.getChildren().add(MedicamentContainer);
+    public void showMedicamentContainer(BorderPane MainContainer) {
+        MedicamentContainer medicamentContainer = new MedicamentContainer();
+        MainContainer.setCenter(medicamentContainer);
     }
 
-    public void showVenteContainer(Pane userProcessContainer, Pane VenteContainer) {
-        userProcessContainer.getChildren().clear();
-        userProcessContainer.getChildren().add(VenteContainer);
+    public void showVenteContainer(BorderPane MainContainer) {
+        VenteContainer venteContainer = new VenteContainer();
+        MainContainer.setCenter(venteContainer);
     }
-    public void showCommandeContainer(Pane userProcessContainer, Pane CommandeContainer) {
-        userProcessContainer.getChildren().clear();
-        userProcessContainer.getChildren().add(CommandeContainer);
+    public void showCommandeContainer(BorderPane MainContainer) {
+        CommandeContainer commandeContainer = new CommandeContainer();
+        MainContainer.setCenter(commandeContainer);
     }
 
     public void LOGOUT() {

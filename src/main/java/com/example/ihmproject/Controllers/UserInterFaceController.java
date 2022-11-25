@@ -1,56 +1,73 @@
 package com.example.ihmproject.Controllers;
 
+import com.example.ihmproject.Containers.CaisseContainer;
+import com.example.ihmproject.Containers.StockContainer;
 import com.example.ihmproject.Models.UserInterFaceModel;
+import com.example.ihmproject.UserInterFace;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class UserInterFaceController {
-    @FXML
-    private Button CaisseBTN;
-    @FXML
-    private Button StockBTN;
-    @FXML
-    private Button MedBTN;
-    @FXML
-    private Button VenteBTN;
-    @FXML
-    private Button ComBTN;
-    @FXML
-    private Button LOGOUT;
-    @FXML
-    private Pane userProcessContainer,CaisseContainer
-            ,StockContainer,MedicamentContainer
-            ,VenteContainer,CommandeContainer;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-    private UserInterFaceModel model = new UserInterFaceModel();
+public class UserInterFaceController implements Initializable {
+
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private BorderPane MainContainer;
 
-        CaisseBTN.setOnAction(ActionEvent ->{
-            model.showCaisseContainer(userProcessContainer,StockContainer);
-        });
+    public void CaisseBTN(ActionEvent event) throws IOException {
+        loadScene("./CaisseContainer.fxml");
+    }
 
-        StockBTN.setOnAction(ActionEvent ->{
-            model.showStockContainer(userProcessContainer,CaisseContainer);
-        });
+    public void StockBTN(ActionEvent event) throws IOException {
+        loadScene("./StockContainer.fxml");
+    }
 
-        MedBTN.setOnAction(ActionEvent ->{
-            model.showMedicamentContainer(userProcessContainer,MedicamentContainer);
-        });
 
-        VenteBTN.setOnAction(ActionEvent ->{
-            model.showVenteContainer(userProcessContainer,VenteContainer);
-        });
+    public void MedBTN(ActionEvent event) throws IOException {
+        loadScene("MedicamentContainer.fxml");
+    }
 
-        ComBTN.setOnAction(ActionEvent ->{
-            model.showCommandeContainer(userProcessContainer,CommandeContainer);
-        });
 
-        LOGOUT.setOnAction(ActionEvent ->{
-            model.LOGOUT();
-        });
+    public void VenteBTN(ActionEvent event) throws IOException {
+        loadScene("VenteContainer.fxml");
+    }
+
+
+    public void ComBTN(ActionEvent event) throws IOException {
+        loadScene("CommandeContainer.fxml");
+    }
+
+    public void LOGOUT(ActionEvent event) throws IOException {
+
+    }
+
+
+    private void loadScene(String sc) throws IOException {
+        Parent root = null;
+        URL    url  = null;
+        String sceneFile = sc;
+        url  = Objects.requireNonNull(getClass().getClassLoader().getResource(sc));
+        root = FXMLLoader.load(url);
+        MainContainer.setCenter(root);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
 }
