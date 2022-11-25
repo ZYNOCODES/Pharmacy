@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="10000.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="800.0" prefWidth="265.0">
+      <Pane maxHeight="8000.0" prefHeight="800.0" prefWidth="265.0">
          <children>
             <VBox alignment="BASELINE_CENTER" prefHeight="800.0" prefWidth="265.0" style="-fx-background-color: #90CC6E;">
                <children>
@@ -78,6 +78,29 @@
                </children></VBox>
          </children>
       </Pane>
-      <Pane id="userProcessContainer" prefHeight="800.0" prefWidth="735.0" />
+      <Pane id="userProcessContainer" maxHeight="8000.0" maxWidth="7350.0" prefHeight="800.0" prefWidth="735.0">
+         <children>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="735.0">
+               <children>
+                  <Pane id="CaisseContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="735.0" />
+                  <Pane id="StockContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="735.0">
+                     <children>
+                        <VBox alignment="TOP_RIGHT" prefHeight="800.0" prefWidth="735.0">
+                           <children>
+                              <Label alignment="CENTER" text="ADMIN" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets right="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children></Pane>
    </children>
 </HBox>

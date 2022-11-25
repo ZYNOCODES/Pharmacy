@@ -1,5 +1,6 @@
 package com.example.ihmproject.Controllers;
 
+import com.example.ihmproject.Models.UserInterFaceModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,33 +20,36 @@ public class UserInterFaceController {
     @FXML
     private Button LOGOUT;
     @FXML
-    private Pane userProcessContainer;
+    private Pane userProcessContainer,CaisseContainer
+            ,StockContainer,MedicamentContainer
+            ,VenteContainer,CommandeContainer;
 
+    private UserInterFaceModel model = new UserInterFaceModel();
     @FXML
     private void handleButtonAction(ActionEvent event) {
 
         CaisseBTN.setOnAction(ActionEvent ->{
-
+            model.showCaisseContainer(userProcessContainer,StockContainer);
         });
 
         StockBTN.setOnAction(ActionEvent ->{
-
+            model.showStockContainer(userProcessContainer,CaisseContainer);
         });
 
         MedBTN.setOnAction(ActionEvent ->{
-
+            model.showMedicamentContainer(userProcessContainer,MedicamentContainer);
         });
 
         VenteBTN.setOnAction(ActionEvent ->{
-
+            model.showVenteContainer(userProcessContainer,VenteContainer);
         });
 
         ComBTN.setOnAction(ActionEvent ->{
-
+            model.showCommandeContainer(userProcessContainer,CommandeContainer);
         });
 
         LOGOUT.setOnAction(ActionEvent ->{
-
+            model.LOGOUT();
         });
     }
 
