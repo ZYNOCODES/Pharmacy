@@ -1,6 +1,7 @@
 module com.example.ihmproject {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.example.ihmproject to javafx.fxml;
