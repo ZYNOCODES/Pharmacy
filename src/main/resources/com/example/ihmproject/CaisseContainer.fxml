@@ -1,48 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="744.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: white;" />
-      <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white;" text="Search" />
-      <TableView layoutX="46.0" layoutY="100.0" prefHeight="250.0" prefWidth="650.0" style="-fx-background-color: white;">
-        <columns>
-          <TableColumn prefWidth="162.5" text="Name" />
-          <TableColumn prefWidth="162.5" text="Id" />
-            <TableColumn prefWidth="162.5" text="Price" />
-            <TableColumn prefWidth="162.5" text="Stock" />
-        </columns>
-      </TableView>
-      <Button layoutX="61.0" layoutY="370.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View Details" />
-      <Label layoutX="194.0" layoutY="376.0" prefHeight="18.0" prefWidth="62.0" text="Sale price :" />
-      <TextField layoutX="262.0" layoutY="373.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
-      <Label layoutX="355.0" layoutY="377.0" prefHeight="18.0" prefWidth="62.0" text="Quantity :" />
-      <Spinner layoutX="418.0" layoutY="374.0" prefHeight="22.0" prefWidth="64.0" style="-fx-background-color: white;" />
-      <Button layoutX="554.0" layoutY="366.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add to cart" />
-      <TableView layoutX="46.0" layoutY="423.0" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;">
-        <columns>
-          <TableColumn prefWidth="162.5" text="Name" />
-          <TableColumn prefWidth="162.5" text="Price" />
-            <TableColumn prefWidth="162.5" text="Quantity" />
-            <TableColumn prefWidth="162.5" text="Total" />
-        </columns>
-      </TableView>
-      <Button layoutX="61.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View items" />
-      <TextField layoutX="200.0" layoutY="741.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
-      <Button layoutX="262.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Quantity" />
-      <Button layoutX="417.0" layoutY="733.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Check out">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="579.0" layoutY="738.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove" />
-   </children>
-</AnchorPane>
+<BorderPane fx:id="CaisseContainer" maxHeight="-Infinity" maxWidth="10000.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ihmproject.Controllers.UserInterFaceController">
+    <left>
+        <Pane maxHeight="8000.0" prefHeight="800.0" prefWidth="265.0">
+            <children>
+                <VBox alignment="BASELINE_CENTER" prefHeight="800.0" prefWidth="265.0" style="-fx-background-color: #90CC6E;">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <ImageView cache="true" fitHeight="75.0" fitWidth="85.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../photos/logo.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label alignment="TOP_CENTER" prefHeight="45.0" prefWidth="156.0" style="-fx-font-family: po;" text="Pharmacy" textAlignment="CENTER" textFill="#389700">
+                                    <font>
+                                        <Font name="Bookshelf Symbol 7" size="30.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="10.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#CaisseBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Caisse" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="40.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#StockBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Stock" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#MedBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Medicament" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#VenteBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Vente" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#ComBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Commande" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button fx:id="LOGOUT" mnemonicParsing="false" style="-fx-background-color: #389700; -fx-padding: 8;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children></VBox>
+            </children>
+        </Pane>
+    </left>
+    <center>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="735.0" style="-fx-background-color: #CCFFCC;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <Button layoutX="659.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
+                <Button layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                <TableView layoutX="46.0" layoutY="100.0" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="100.0">
+                    <columns>
+                        <TableColumn prefWidth="162.5" text="Name" />
+                        <TableColumn prefWidth="162.5" text="Id" />
+                        <TableColumn prefWidth="162.5" text="Price" />
+                        <TableColumn prefWidth="162.5" text="Stock" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="735.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="365.0">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View Details" />
+                        <Label prefHeight="18.0" prefWidth="62.0" text="Sale price :">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
+                        <Label prefHeight="18.0" prefWidth="62.0" text="Quantity :">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Spinner maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="64.0" style="-fx-background-color: white;" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add to cart">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView layoutX="46.0" layoutY="423.0" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="423.0">
+                    <columns>
+                        <TableColumn prefWidth="162.5" text="Name" />
+                        <TableColumn prefWidth="162.5" text="Price" />
+                        <TableColumn prefWidth="162.5" text="Quantity" />
+                        <TableColumn prefWidth="162.5" text="Total" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="735.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="735.0">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View items" />
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Quantity">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Check out">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <rotationAxis>
+                <Point3D />
+            </rotationAxis>
+        </AnchorPane>
+    </center>
+</BorderPane>

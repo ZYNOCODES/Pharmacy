@@ -1,39 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="744.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: white;" />
-      <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white;" text="Search" />
-      <TableView layoutX="419.0" layoutY="98.0" prefHeight="620.0" prefWidth="300.0" style="-fx-background-color: white;">
-        <columns>
-          <TableColumn prefWidth="100.0" text="Number" />
-          <TableColumn prefWidth="100.0" text="Date" />
-            <TableColumn prefWidth="100.0" text="Condition" />
-        </columns>
-      </TableView>
-      <Button layoutX="530.0" layoutY="737.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Valide" />
-      <TextField layoutX="103.0" layoutY="122.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" />
-      <TextField layoutX="103.0" layoutY="211.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" />
-      <Label layoutX="44.0" layoutY="134.0" text="Name :" />
-      <Label layoutX="44.0" layoutY="224.0" text="Quantity :" />
-      <Button layoutX="26.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Remove" />
-      <Button layoutX="128.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Edit" />
-      <Button layoutX="282.0" layoutY="686.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Add items" />
-      <TableView layoutX="9.0" layoutY="301.0" prefHeight="350.0" prefWidth="400.0">
-        <columns>
-          <TableColumn prefWidth="200.0" text="Name" />
-          <TableColumn prefWidth="200.0" text="Quantity" />
-        </columns>
-      </TableView>
-      <Button layoutX="255.0" layoutY="172.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Add" />
-   </children>
-</AnchorPane>
+<BorderPane fx:id="MainContainer" maxHeight="-Infinity" maxWidth="10000.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ihmproject.Controllers.UserInterFaceController">
+    <left>
+        <Pane maxHeight="8000.0" prefHeight="800.0" prefWidth="265.0">
+            <children>
+                <VBox alignment="BASELINE_CENTER" prefHeight="800.0" prefWidth="265.0" style="-fx-background-color: #90CC6E;">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <ImageView cache="true" fitHeight="75.0" fitWidth="85.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../photos/logo.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label alignment="TOP_CENTER" prefHeight="45.0" prefWidth="156.0" style="-fx-font-family: po;" text="Pharmacy" textAlignment="CENTER" textFill="#389700">
+                                    <font>
+                                        <Font name="Bookshelf Symbol 7" size="30.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="10.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#CaisseBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Caisse" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="40.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#StockBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Stock" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#MedBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Medicament" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#VenteBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Vente" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#ComBTN" style="-fx-background-color: none; -fx-padding: 10;" text="Commande" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <Button fx:id="LOGOUT" mnemonicParsing="false" style="-fx-background-color: #389700; -fx-padding: 8;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets top="70.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children></VBox>
+            </children>
+        </Pane>
+    </left>
+    <center>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="735.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <Button layoutX="659.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
+                <Button layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                <TableView layoutX="419.0" layoutY="98.0" prefHeight="620.0" prefWidth="300.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
+                    <columns>
+                        <TableColumn prefWidth="100.0" text="Number" />
+                        <TableColumn prefWidth="100.0" text="Date" />
+                        <TableColumn prefWidth="100.0" text="Condition" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="730.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Valide" />
+                    </children>
+                </HBox>
+                <TextField layoutX="103.0" layoutY="122.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="103.0" />
+                <TextField layoutX="103.0" layoutY="211.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="103.0" />
+                <Label layoutX="44.0" layoutY="134.0" text="Name :" AnchorPane.leftAnchor="44.0" />
+                <Label layoutX="44.0" layoutY="224.0" text="Quantity :" AnchorPane.leftAnchor="44.0" />
+                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="680.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Remove" />
+                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Edit">
+                            <HBox.margin>
+                                <Insets left="30.0" />
+                            </HBox.margin></Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Add items">
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView layoutX="9.0" layoutY="301.0" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="320.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="375.0">
+                    <columns>
+                        <TableColumn prefWidth="200.0" text="Name" />
+                        <TableColumn prefWidth="200.0" text="Quantity" />
+                    </columns>
+                </TableView>
+                <Button layoutX="255.0" layoutY="172.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: white;" text="Add" AnchorPane.leftAnchor="255.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

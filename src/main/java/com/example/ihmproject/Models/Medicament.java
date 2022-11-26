@@ -1,10 +1,5 @@
 package com.example.ihmproject.Models;
 
-
-/**
- *
- * @author Admin
- */
 public class Medicament {
     private int med_ID;
     private int med_Quantity;

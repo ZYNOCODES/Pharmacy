@@ -1,18 +1,8 @@
 package com.example.ihmproject.Models;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+import javax.swing.*;
 
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author Neha Ghate
- */
 public class Validator {
 
     public boolean isValidInteger(String str)
@@ -23,7 +13,7 @@ public class Validator {
             return true;
         }
         catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(null, "Please enter a number","warning",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter a number","warning", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
