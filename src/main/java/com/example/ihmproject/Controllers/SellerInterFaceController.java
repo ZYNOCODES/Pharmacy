@@ -1,27 +1,41 @@
 package com.example.ihmproject.Controllers;
 
+import com.example.ihmproject.SellerInterFace;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.layout.BorderPane;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class SellerInterFaceController {
-    @FXML
-    private Button CaisseBTN;
-    @FXML
-    private Button MedBTN;
-    @FXML
-    private Pane userProcessContainer;
+public class SellerInterFaceController implements Initializable {
 
     @FXML
-    protected void ButtonClick() {
+    private BorderPane SellerContainer;
 
-        CaisseBTN.setOnAction(ActionEvent ->{
+    public void CaisseBTN(ActionEvent event) throws IOException {
+        loadScene("CaisseContainer.fxml");
+    }
 
-        });
+    public void MedBTN(ActionEvent event) throws IOException {
+        loadScene("MedicamentContainer.fxml");
+    }
 
-        MedBTN.setOnAction(ActionEvent ->{
 
-        });
+    private void loadScene(String sc) throws IOException {
+        Parent root = FXMLLoader.load(SellerInterFace.class.getResource(sc));
+        SellerContainer.setCenter(root);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            loadScene("CaisseContainer.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

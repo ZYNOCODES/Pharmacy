@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<BorderPane fx:id="ManagerContainer" maxHeight="-Infinity" maxWidth="10000.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ihmproject.Controllers.ManagerInterFaceController">
+   <left>
       <Pane prefHeight="800.0" prefWidth="265.0">
          <children>
             <VBox alignment="BASELINE_CENTER" prefHeight="800.0" prefWidth="265.0" style="-fx-background-color: #90CC6E;">
@@ -35,21 +35,21 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button id="StockBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Stock" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="StockBTN" onAction="#StockBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Stock" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="100.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button id="MedBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Medicament" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="MedBTN" onAction="#MedBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Medicament" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="130.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button id="ComBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Commande" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="ComBTN" onAction="#ComBTN" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: none; -fx-padding: 10;" text="Commande" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="130.0" />
                      </VBox.margin>
@@ -59,6 +59,5 @@
                </children></VBox>
          </children>
       </Pane>
-      <Pane id="userProcessContainer" prefHeight="800.0" prefWidth="735.0" />
-   </children>
-</HBox>
+   </left>
+</BorderPane>

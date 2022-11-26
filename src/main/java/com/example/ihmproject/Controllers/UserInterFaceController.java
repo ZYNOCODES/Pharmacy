@@ -26,14 +26,14 @@ import java.util.ResourceBundle;
 public class UserInterFaceController implements Initializable {
 
     @FXML
-    private BorderPane MainContainer;
+    private BorderPane UserContainer;
 
     public void CaisseBTN(ActionEvent event) throws IOException {
-        loadScene("./CaisseContainer.fxml");
+        loadScene("CaisseContainer.fxml");
     }
 
     public void StockBTN(ActionEvent event) throws IOException {
-        loadScene("./StockContainer.fxml");
+        loadScene("StockContainer.fxml");
     }
 
 
@@ -57,17 +57,17 @@ public class UserInterFaceController implements Initializable {
 
 
     private void loadScene(String sc) throws IOException {
-        Parent root = null;
-        URL    url  = null;
-        String sceneFile = sc;
-        url  = Objects.requireNonNull(getClass().getClassLoader().getResource(sc));
-        root = FXMLLoader.load(url);
-        MainContainer.setCenter(root);
+        Parent root = FXMLLoader.load(UserInterFace.class.getResource(sc));
+        UserContainer.setCenter(root);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            loadScene("CaisseContainer.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
