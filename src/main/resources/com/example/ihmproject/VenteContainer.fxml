@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -18,8 +17,8 @@
                 <TableView layoutX="47.0" layoutY="163.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="163.0">
                     <columns>
                         <TableColumn prefWidth="162.5" text="Name" />
-                        <TableColumn prefWidth="162.5" text="Id" />
-                        <TableColumn prefWidth="162.5" text="Stock" />
+                        <TableColumn prefWidth="162.5" text="Price" />
+                        <TableColumn prefWidth="162.5" text="Quantity" />
                         <TableColumn prefWidth="162.5" text="Price" />
                     </columns>
                 </TableView>

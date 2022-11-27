@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -24,7 +22,7 @@
                         <TableColumn prefWidth="116.6" text="Price" />
                         <TableColumn prefWidth="116.6" text="Catagory" />
                         <TableColumn prefWidth="116.6" text="End date" />
-                        <TableColumn prefWidth="116.6" text="Stock" />
+                        <TableColumn prefWidth="116.6" text="Quantity" />
                     </columns>
                 </TableView>
             </children>

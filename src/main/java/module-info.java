@@ -8,6 +8,4 @@ module com.example.ihmproject {
     exports com.example.ihmproject;
     exports com.example.ihmproject.Controllers;
     opens com.example.ihmproject.Controllers to javafx.fxml;
-    exports com.example.ihmproject.Containers;
-    opens com.example.ihmproject.Containers to javafx.fxml;
 }

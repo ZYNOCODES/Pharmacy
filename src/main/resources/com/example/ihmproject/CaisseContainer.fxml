@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -22,7 +21,7 @@
                         <TableColumn prefWidth="162.5" text="Name" />
                         <TableColumn prefWidth="162.5" text="Id" />
                         <TableColumn prefWidth="162.5" text="Price" />
-                        <TableColumn prefWidth="162.5" text="Stock" />
+                        <TableColumn prefWidth="162.5" text="Quantity" />
                     </columns>
                 </TableView>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="735.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="365.0">

@@ -20,7 +20,7 @@
                <columns>
                   <TableColumn prefWidth="100.0" text="Name" />
                   <TableColumn prefWidth="100.0" text="Id" />
-                  <TableColumn prefWidth="100.0" text="Stock" />
+                  <TableColumn prefWidth="100.0" text="Quantity" />
                </columns>
             </TableView>
             <Label layoutX="30.0" layoutY="177.0" prefHeight="18.0" prefWidth="62.0" text="Name :" AnchorPane.leftAnchor="30.0" />
