@@ -9,18 +9,18 @@
    <center>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="735.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
          <children>
-            <Button layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button fx:id="ADMIN" layoutX="659.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-text-fill: #1e5615; -fx-background-color: white;" text="ADMIN" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
             <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
-            <TableView layoutX="430.0" layoutY="105.0" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+            <TableView fx:id="StockContainerTable" layoutX="400.0" layoutY="100.0" maxWidth="1.7976931348623157E308" onMouseClicked="#getItem" prefHeight="600.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0">
                <columns>
-                  <TableColumn prefWidth="100.0" text="Name" />
-                  <TableColumn prefWidth="100.0" text="Id" />
-                  <TableColumn prefWidth="100.0" text="Quantity" />
+                  <TableColumn fx:id="NAMEcol" editable="false" maxWidth="323.0" minWidth="89.0" prefWidth="89.0" resizable="false" sortable="false" text="Name" />
+                  <TableColumn fx:id="IDcol" editable="false" maxWidth="91.0" minWidth="89.0" prefWidth="89.0" resizable="false" sortable="false" text="Id" />
+                  <TableColumn fx:id="QUANTITYcol" editable="false" maxWidth="212.0" minWidth="89.0" prefWidth="89.0" resizable="false" sortable="false" text="Quantity" />
                </columns>
             </TableView>
             <Label layoutX="30.0" layoutY="177.0" prefHeight="18.0" prefWidth="62.0" text="Name :" AnchorPane.leftAnchor="30.0" />
@@ -58,7 +58,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
-                  <Button fx:id="EditQuantity" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#EditQuantity" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Edit Quantity">
+                  <Button fx:id="Update" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Update" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Update">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>

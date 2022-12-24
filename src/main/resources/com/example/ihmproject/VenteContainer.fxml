@@ -14,18 +14,18 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <TableView layoutX="47.0" layoutY="163.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="163.0">
+                <TableView fx:id="VenteTable" layoutX="47.0" layoutY="163.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#getitem" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="163.0">
                     <columns>
-                        <TableColumn prefWidth="162.5" text="Name" />
-                        <TableColumn prefWidth="162.5" text="Price" />
-                        <TableColumn prefWidth="162.5" text="Quantity" />
-                        <TableColumn prefWidth="162.5" text="Price" />
+                        <TableColumn fx:id="NameVenteTable" prefWidth="162.5" text="Name" />
+                        <TableColumn fx:id="PriceVenteTable" prefWidth="162.5" text="Price" />
+                        <TableColumn fx:id="QuantityVenteTable" prefWidth="162.5" text="Quantity" />
+                        <TableColumn fx:id="TotalVenteTable" prefWidth="162.5" text="Total" />
                     </columns>
                 </TableView>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="500.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Edit " />
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Remove">
+                        <Button mnemonicParsing="false" onAction="#ApdateBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Edit " />
+                        <Button mnemonicParsing="false" onAction="#RemoveBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Remove">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
@@ -36,14 +36,14 @@
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="620.0">
                     <children>
                         <Label style="-fx-font-size: 30 xp;" text="TOTAL :" />
-                        <TextField prefHeight="42.0" prefWidth="81.0" style="-fx-background-color: white;">
+                        <TextField fx:id="VenteTotalPriceTextField" prefHeight="42.0" prefWidth="81.0" style="-fx-background-color: white;">
                             <HBox.margin>
                                 <Insets left="20.0" />
                             </HBox.margin>
                         </TextField>
                     </children>
                 </HBox>
-                <Spinner layoutX="595.0" layoutY="87.0" prefHeight="22.0" prefWidth="64.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="87.0" />
+                <Spinner fx:id="VenteNumberspinner" layoutX="595.0" layoutY="87.0" onMouseClicked="#VenteNumberspinner" prefHeight="22.0" prefWidth="64.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="87.0" />
             </children>
         </AnchorPane>
     </center>

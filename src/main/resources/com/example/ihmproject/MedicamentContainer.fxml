@@ -15,14 +15,15 @@
                 </Button>
                 <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
                 <Button layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
-                <TableView layoutX="22.0" layoutY="110.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="110.0">
+                <TableView fx:id="MedicamentContainerTable" layoutX="22.0" layoutY="110.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="110.0">
                     <columns>
-                        <TableColumn prefWidth="116.6" text="Name" />
-                        <TableColumn prefWidth="116.6" text="Id" />
-                        <TableColumn prefWidth="116.6" text="Price" />
-                        <TableColumn prefWidth="116.6" text="Catagory" />
-                        <TableColumn prefWidth="116.6" text="End date" />
-                        <TableColumn prefWidth="116.6" text="Quantity" />
+                        <TableColumn fx:id="Name" prefWidth="116.6" text="Name" />
+                        <TableColumn fx:id="ID" prefWidth="116.6" text="Id" />
+                        <TableColumn fx:id="Price" prefWidth="116.6" text="Price" />
+                        <TableColumn fx:id="Category" prefWidth="116.6" text="Category" />
+                        <TableColumn fx:id="StartDate" prefWidth="116.6" text="Date" />
+                        <TableColumn fx:id="EndDate" prefWidth="116.6" text="EndDate" />
+                  <TableColumn fx:id="Quantity" prefWidth="116.6" text="Quantity" />
                     </columns>
                 </TableView>
             </children>

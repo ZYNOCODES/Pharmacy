@@ -15,59 +15,62 @@
                     </font>
                 </Button>
                 <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
-                <Button layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
-                <TableView layoutX="46.0" layoutY="100.0" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="100.0">
+                <Button fx:id="SearchBTN" layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                <TableView fx:id="StockCaisseTable" accessibleRole="TREE_TABLE_VIEW" layoutX="46.0" layoutY="100.0" maxWidth="1.7976931348623157E308" onMouseClicked="#getItemStockTable" prefHeight="250.0" prefWidth="650.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="100.0">
                     <columns>
-                        <TableColumn prefWidth="162.5" text="Name" />
-                        <TableColumn prefWidth="162.5" text="Id" />
-                        <TableColumn prefWidth="162.5" text="Price" />
-                        <TableColumn prefWidth="162.5" text="Quantity" />
+                        <TableColumn fx:id="Name_StockTable" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="162.5" resizable="false" sortType="DESCENDING" sortable="false" text="Name" />
+                        <TableColumn fx:id="ID_StockTable" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="162.5" resizable="false" sortType="DESCENDING" sortable="false" text="Id" />
+                        <TableColumn fx:id="Price_StockTable" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="162.5" resizable="false" sortType="DESCENDING" sortable="false" text="Price" />
+                        <TableColumn fx:id="Quantity_StockTable" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="162.5" resizable="false" sortType="DESCENDING" sortable="false" text="Quantity" />
                     </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
                 </TableView>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="735.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="365.0">
                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View Details" />
+                        <Button fx:id="ViewDetailsBTN" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View Details" />
                         <Label prefHeight="18.0" prefWidth="62.0" text="Sale price :">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
+                        <TextField fx:id="PriceTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;" />
                         <Label prefHeight="18.0" prefWidth="62.0" text="Quantity :">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
-                        <Spinner maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="64.0" style="-fx-background-color: white;" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add to cart">
+                        <Spinner fx:id="QuantitySpinner" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="64.0" style="-fx-background-color: white;" />
+                        <Button fx:id="AddVenteBTN" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add to cart">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView layoutX="46.0" layoutY="423.0" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="423.0">
+                <TableView fx:id="VenteCaisseTable" layoutX="46.0" layoutY="423.0" onMouseClicked="#getItemVenteTable" prefHeight="300.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="423.0">
                     <columns>
-                        <TableColumn prefWidth="162.5" text="Name" />
-                        <TableColumn prefWidth="162.5" text="Price" />
-                        <TableColumn prefWidth="162.5" text="Quantity" />
-                        <TableColumn prefWidth="162.5" text="Total" />
+                        <TableColumn fx:id="Name_VenteTable" prefWidth="162.5" text="Name" />
+                        <TableColumn fx:id="Price_VenteTable" prefWidth="162.5" text="Price" />
+                        <TableColumn fx:id="Quantity_VenteTable" prefWidth="162.5" text="Quantity" />
+                        <TableColumn fx:id="Total_VenteTable" prefWidth="162.5" text="Total" />
                     </columns>
                 </TableView>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="735.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="735.0">
                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View items" />
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;">
+                        <Button fx:id="ViewitemsBTN" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ViewitemsBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="View items" />
+                        <TextField fx:id="QuantityTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: white;">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </TextField>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Quantity">
+                        <Button fx:id="ApdateQuantityBTN" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: white;" text="Edit Quantity">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Check out">
+                        <Button fx:id="CheckOutBTN" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#CheckOutBTN" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Check out">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -75,7 +78,7 @@
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove">
+                        <Button  maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#RemoveVenteBTN" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>
