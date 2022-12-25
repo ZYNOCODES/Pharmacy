@@ -93,5 +93,75 @@ public class VenteDB extends Vente {
 //            throw new RuntimeException(e);
 //        }
 //    }
+// getting the data at the expense of the vente Number
+public static ObservableList<Vente> getVente(int venteNumber){
+    ObservableList<Vente> Vente = FXCollections.observableArrayList();
 
+    String query = "select * from Vente where VenteNumber = ?";
+    try {
+        statement = connection.prepareStatement(query);
+        statement.setInt(1,venteNumber);
+        resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            int med_ID = resultSet.getInt("med_ID");
+            int VenteNumber = resultSet.getInt("VenteNumber");
+            int Med_Quantity = resultSet.getInt("med_Quantity");
+            int Med_Price = resultSet.getInt("med_Price");
+            int med_Total = resultSet.getInt("med_TotalPrice");
+            String Med_Name = resultSet.getString("med_Name");
+            Vente vente = new Vente(med_ID,VenteNumber,Med_Quantity,Med_Name,med_Total,Med_Price);
+            Vente.add(vente);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+    return Vente;
 }
+
+    //calculate the total price
+    public int calcTotalPrice(int venteNumber){
+        int calc = 0;
+        if(venteNumber >= 1){
+            String query = "select med_TotalPrice from Vente where VenteNumber = ?";
+            try {
+                statement = connection.prepareStatement(query);
+                statement.setInt(1,venteNumber);
+                resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    calc +=resultSet.getInt("med_TotalPrice");
+                }
+                return calc;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            String query = "select med_TotalPrice from Vente";
+            try {
+                statement = connection.prepareStatement(query);
+                resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    calc +=resultSet.getInt("med_TotalPrice");
+                }
+                return calc;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+    //  remove vente at the expense of an venteNumber
+    public static void RemoveOrderVente(int venteNumber){
+        String query = "delete from Vente where venteNumber = ?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, venteNumber);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+
