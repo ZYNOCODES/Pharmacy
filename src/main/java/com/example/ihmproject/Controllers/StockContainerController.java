@@ -1,5 +1,7 @@
 package com.example.ihmproject.Controllers;
 
+import com.example.ihmproject.Medicament;
+import com.example.ihmproject.MedicamentDB;
 import com.example.ihmproject.Validator;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
