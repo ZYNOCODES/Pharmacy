@@ -14,8 +14,8 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
-                <Button fx:id="SearchBTN" layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                <TextField fx:id="SearchInput" alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
+                <Button fx:id="SearchBTN" layoutX="629.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#SearchBTN" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
                 <TableView fx:id="StockCaisseTable" accessibleRole="TREE_TABLE_VIEW" layoutX="46.0" layoutY="100.0" maxWidth="1.7976931348623157E308" onMouseClicked="#getItemStockTable" prefHeight="250.0" prefWidth="650.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="100.0">
                     <columns>
                         <TableColumn fx:id="Name_StockTable" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="162.5" resizable="false" sortType="DESCENDING" sortable="false" text="Name" />
@@ -78,7 +78,7 @@
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Button>
-                        <Button  maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#RemoveVenteBTN" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#RemoveVenteBTN" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Remove">
                             <HBox.margin>
                                 <Insets left="50.0" />
                             </HBox.margin>

@@ -11,6 +11,14 @@ public class Vente {
     public Vente() {
     }
 
+    public Vente(int med_ID, int med_Quantity, String med_Name, int med_Total, int med_Price) {
+        this.med_ID = med_ID;
+        this.med_Quantity = med_Quantity;
+        this.med_Name = med_Name;
+        this.med_Total = med_Total;
+        this.med_Price = med_Price;
+    }
+
     public Vente(int med_ID, int VenteNumber, int med_Quantity, String med_Name, int med_Total, int med_Price) {
         this.med_Quantity = med_Quantity;
         this.med_Name = med_Name;

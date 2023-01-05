@@ -14,7 +14,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
+            <TextField fx:id="SearchInput" alignment="TOP_RIGHT" layoutX="419.0" layoutY="46.0" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0" />
             <Button layoutX="629.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0" />
             <TableView fx:id="StockContainerTable" layoutX="400.0" layoutY="100.0" maxWidth="1.7976931348623157E308" onMouseClicked="#getItem" prefHeight="600.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0">
                <columns>
@@ -24,17 +24,17 @@
                </columns>
             </TableView>
             <Label layoutX="30.0" layoutY="177.0" prefHeight="18.0" prefWidth="62.0" text="Name :" AnchorPane.leftAnchor="30.0" />
-            <TextField fx:id="MedDateTextField" layoutX="92.0" layoutY="400.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
+            <DatePicker fx:id="MedDate" layoutX="92.0" layoutY="400.0" prefHeight="42.0" prefWidth="131.0" promptText="Entre a date" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
             <Label layoutX="30.0" layoutY="293.0" prefHeight="18.0" prefWidth="62.0" text="Quantity :" AnchorPane.leftAnchor="30.0" />
             <TextField fx:id="MedNameTextField" layoutX="92.0" layoutY="165.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
             <HBox alignment="CENTER" maxWidth="-Infinity" AnchorPane.leftAnchor="85.0" AnchorPane.topAnchor="650.0">
                <children>
-                  <Button fx:id="Cancel" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Cancel" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Cancel">
+                  <Button fx:id="Cancel" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#CancelBTN" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: white;" text="Cancel">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="ADD" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ADD" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Add">
+                  <Button fx:id="ADD" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#AddBTN" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white; -fx-font-size: 15px;" text="Add">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -47,18 +47,18 @@
             <TextField fx:id="MedQuantityTextField" layoutX="92.0" layoutY="281.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
             <TextField fx:id="MedCategoryTextField" layoutX="287.0" layoutY="224.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="285.0" />
             <TextField fx:id="MedPriceTextField" layoutX="287.0" layoutY="446.0" prefHeight="42.0" prefWidth="81.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="287.0" />
-            <TextField fx:id="MedEndDateTextField" layoutX="92.0" layoutY="513.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
+            <DatePicker fx:id="MedEndDate" layoutX="92.0" layoutY="513.0" prefHeight="42.0" prefWidth="131.0" promptText="Entre end date" style="-fx-background-color: white;" AnchorPane.leftAnchor="92.0" />
             <Label layoutX="39.0" layoutY="412.0" prefHeight="18.0" prefWidth="43.0" text="Date :" AnchorPane.leftAnchor="30.0" />
             <Label layoutX="35.0" layoutY="526.0" text="End date :" AnchorPane.leftAnchor="35.0" />
             <Label layoutX="223.0" layoutY="236.0" text="Category :" AnchorPane.leftAnchor="223.0" />
             <Label layoutX="234.0" layoutY="458.0" text="Price :" AnchorPane.leftAnchor="234.0" />
             <HBox alignment="CENTER" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="35.0">
                <children>
-                  <Button fx:id="Remove" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Remove" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Remove">
+                  <Button fx:id="Remove" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#RemoveBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Remove">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
-                  <Button fx:id="Update" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Update" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Update">
+                  <Button fx:id="Update" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#UpdateBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Update">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>

@@ -4,6 +4,8 @@ import com.example.ihmproject.Medicament;
 import com.example.ihmproject.MedicamentDB;
 import com.example.ihmproject.Validator;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class StockContainerController implements Initializable {
@@ -27,17 +31,25 @@ public class StockContainerController implements Initializable {
     @FXML
     private TableColumn<Medicament,Integer> QUANTITYcol;
     @FXML
+    private DatePicker MedEndDate,MedDate;
+    private LocalDate LocalMedDate,LocalMedEndDate;
+    @FXML
     private TextField MedNameTextField, MedCategoryTextField, MedDateTextField, MedEndDateTextField, MedQuantityTextField, MedPriceTextField;
     int Med_Id = 0;
+    @FXML
+    private TextField SearchInput;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showMedicament();
+        Search();
     }
-    public void ADD(ActionEvent actionEvent) {
+    public void AddBTN(ActionEvent actionEvent) {
         String MedName = MedNameTextField.getText();
         String MedCategory = MedCategoryTextField.getText();
-        String MedDate = MedDateTextField.getText();
-        String MedEndDate = MedEndDateTextField.getText();
+        LocalMedDate = MedDate.getValue();
+        String Med_Date = LocalMedDate.toString();
+        LocalMedEndDate = MedEndDate.getValue();
+        String Med_EndDate = LocalMedEndDate.toString();
 
         Validator validator = new Validator();
         Medicament Med =  new Medicament();
@@ -58,16 +70,16 @@ public class StockContainerController implements Initializable {
         {
             errorArray.add("Medicament Category");
         }
-        if(validator.isStringValid(MedDate)){
-            Med.setMed_Date(MedDate);
+        if(validator.isStringValid(Med_Date)){
+            Med.setMed_Date(Med_Date);
         }
         else
         {
             errorArray.add("Medicament Date");
         }
 
-        if(validator.isStringValid(MedEndDate)){
-            Med.setMed_EndDate(MedEndDate);
+        if(validator.isStringValid(Med_EndDate)){
+            Med.setMed_EndDate(Med_EndDate);
         }
         else
         {
@@ -112,8 +124,8 @@ public class StockContainerController implements Initializable {
             dialog.getDialogPane().getButtonTypes().add(type);
             dialog.showAndWait();
         } else{
-            MedicamentDB.ADDMedicament(MedNameTextField.getText(), MedCategoryTextField.getText(), MedDateTextField.getText(),
-                    MedEndDateTextField.getText(), Integer.parseInt(MedQuantityTextField.getText()), Integer.parseInt(MedPriceTextField.getText()));
+            MedicamentDB.ADDMedicament(MedNameTextField.getText(), MedCategoryTextField.getText(), Med_Date,
+                    Med_EndDate, Integer.parseInt(MedQuantityTextField.getText()), Integer.parseInt(MedPriceTextField.getText()));
             showMedicament();
             clearFields();
 
@@ -126,13 +138,13 @@ public class StockContainerController implements Initializable {
         }
 
     }
-    public void Cancel(ActionEvent actionEvent) {
+    public void CancelBTN(ActionEvent actionEvent) {
         clearFields();
         ADD.setDisable(false);
     }
-    public void Update(ActionEvent actionEvent) {
+    public void UpdateBTN(ActionEvent actionEvent) {
         if(Med_Id != 0){
-            MedicamentDB.updateMedicament(Med_Id, MedNameTextField.getText(), MedCategoryTextField.getText(), MedDateTextField.getText(), MedEndDateTextField.getText(),
+            MedicamentDB.updateMedicament(Med_Id, MedNameTextField.getText(), MedCategoryTextField.getText(), MedDate.getValue().toString(), MedEndDate.getValue().toString(),
                     Integer.parseInt(MedQuantityTextField.getText()), Integer.parseInt(MedPriceTextField.getText()));
             showMedicament();
             Med_Id = 0;
@@ -140,7 +152,7 @@ public class StockContainerController implements Initializable {
             ADD.setDisable(false);
         }
     }
-    public void Remove(ActionEvent actionEvent) {
+    public void RemoveBTN(ActionEvent actionEvent) {
         if(Med_Id != 0){
             MedicamentDB.RemoveMedicament(Med_Id);
             showMedicament();
@@ -153,14 +165,14 @@ public class StockContainerController implements Initializable {
         ObservableList<Medicament> MedicamentList = MedicamentDB.getMedicament();
         StockContainerTable.setItems(MedicamentList);
         NAMEcol.setCellValueFactory(new PropertyValueFactory<>("med_Name"));
-        IDcol.setCellValueFactory(new PropertyValueFactory<>("id_Medicament"));
+        IDcol.setCellValueFactory(new PropertyValueFactory<Medicament,Integer>("med_ID"));
         QUANTITYcol.setCellValueFactory(new PropertyValueFactory<>("med_Quantity"));
     }
     public void clearFields(){
         MedNameTextField.setText(null);
         MedCategoryTextField.setText(null);
-        MedDateTextField.setText(null);
-        MedEndDateTextField.setText(null);
+        MedDate.setDayCellFactory(null);
+        MedEndDate.setDayCellFactory(null);
         MedQuantityTextField.setText(null);
         MedPriceTextField.setText(null);
         Med_Id = 0;
@@ -171,10 +183,37 @@ public class StockContainerController implements Initializable {
         Med_Id = medicament.getMed_ID();
         MedNameTextField.setText(medicament.getMed_Name());
         MedCategoryTextField.setText(medicament.getMed_Category());
-        MedDateTextField.setText(medicament.getMed_Date());
-        MedEndDateTextField.setText(medicament.getMed_EndDate());
+        MedDate.setValue(LocalDate.parse(medicament.getMed_Date()));
+        MedEndDate.setValue(LocalDate.parse(medicament.getMed_EndDate()));
         MedQuantityTextField.setText(String.valueOf(medicament.getMed_Quantity()));
         MedPriceTextField.setText(String.valueOf(medicament.getMed_Price()));
         ADD.setDisable(true);
     }
+    private void Search(){
+        ObservableList<Medicament> MedicamentList = MedicamentDB.getMedicament();
+        FilteredList<Medicament> filteredList = new FilteredList<>(MedicamentList, b->true);
+        SearchInput.textProperty().addListener((observableValue,  oldvalue,  newvalue) -> {
+
+            filteredList.setPredicate(Medicament -> {
+                //if textfield in null
+                if ((newvalue.isEmpty()) || (newvalue.isBlank()) || (newvalue==null)){
+                    return true;
+                }
+
+                String Search = newvalue.toLowerCase();
+                //searching
+                if (Medicament.getMed_Name().toLowerCase().indexOf(Search) > -1){
+                    return true;//search by name
+                }else
+                    return false;//can't find the input
+
+            });
+
+        });
+        SortedList<Medicament> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(StockContainerTable.comparatorProperty());
+        //redisplay table
+        StockContainerTable.setItems(sortedList);
+    }
+
 }

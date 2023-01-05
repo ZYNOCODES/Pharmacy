@@ -4,6 +4,8 @@ import com.example.ihmproject.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,7 +32,7 @@ public class CaisseContainerController implements Initializable {
     @FXML
     private TableColumn<Vente,String> Total_VenteTable,Price_VenteTable,Quantity_VenteTable;
     @FXML
-    private Button AddVenteBTN,ViewDetailsBTN,RemoveBTN,CheckOutBTN,ApdateQuantityBTN,ViewitemsBTN;
+    private Button AddVenteBTN,ApdateQuantityBTN;
     @FXML
     private TextField QuantityTextField,PriceTextField;
     @FXML
@@ -38,24 +40,26 @@ public class CaisseContainerController implements Initializable {
     private SpinnerValueFactory<Integer> valueFactory;
     private Validator validator = new Validator();
     private ArrayList<String> errorArray = new ArrayList();
-    private Vente vn = new Vente();
-    private int Med_Id = 0, VenteNumber = 1;
+    private int Med_Id = 0, VenteNumber = VenteDB.lastNumber()+1;
+    @FXML
+    private TextField SearchInput;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showMedicament();
-        showVente();
+        Search();
     }
     public void showMedicament(){
         ObservableList<Medicament> MedicamentList = MedicamentDB.getMedicament();
         StockCaisseTable.setItems(MedicamentList);
+        ID_StockTable.setCellValueFactory(new PropertyValueFactory<>("med_ID"));
         Name_StockTable.setCellValueFactory(new PropertyValueFactory<>("med_Name"));
         Quantity_StockTable.setCellValueFactory(new PropertyValueFactory<>("med_Quantity"));
         Price_StockTable.setCellValueFactory(new PropertyValueFactory<>("med_Price"));
 
     }
     public void showVente(){
-        ObservableList<Vente> Ventemedicament = VenteDB.getVente();
+        ObservableList<Vente> Ventemedicament = VenteDB.getVente(VenteNumber);
         VenteCaisseTable.setItems(Ventemedicament);
         Name_VenteTable.setCellValueFactory(new PropertyValueFactory<>("med_Name"));
         Total_VenteTable.setCellValueFactory(new PropertyValueFactory<>("med_Total"));
@@ -66,12 +70,25 @@ public class CaisseContainerController implements Initializable {
         if(Med_Id != 0){
             VenteDB.RemoveVente(Med_Id);
             Med_Id = 0;
+            showVente();
         }
-        showVente();
+
     }
 
     public void CheckOutBTN(ActionEvent actionEvent) {
-        VenteNumber++;
+        ObservableList<Vente> items = VenteCaisseTable.getItems();
+        if (!(items.isEmpty())){
+            VenteNumber++;
+            showVente();
+        }else {
+            Dialog<String> dialog = new Dialog<String>();
+            dialog.setTitle("Alert");
+            ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+            dialog.setContentText("Vente items is null");
+            dialog.getDialogPane().getButtonTypes().add(type);
+            dialog.showAndWait();
+        }
+
     }
 
     public void ViewitemsBTN(ActionEvent actionEvent) {
@@ -177,4 +194,33 @@ public class CaisseContainerController implements Initializable {
     }
 
 
+    public void SearchBTN(ActionEvent actionEvent) {
+
+    }
+    private void Search(){
+        ObservableList<Medicament> MedicamentList = MedicamentDB.getMedicament();
+        FilteredList<Medicament> filteredList = new FilteredList<>(MedicamentList, b->true);
+        SearchInput.textProperty().addListener((observableValue,  oldvalue,  newvalue) -> {
+
+            filteredList.setPredicate(Medicament -> {
+                //if textfield in null
+                if ((newvalue.isEmpty()) || (newvalue.isBlank()) || (newvalue==null)){
+                    return true;
+                }
+
+                String Search = newvalue.toLowerCase();
+                //searching
+                if (Medicament.getMed_Name().toLowerCase().indexOf(Search) > -1){
+                    return true;//search by name
+                }else
+                    return false;//can't find the input
+
+            });
+
+        });
+        SortedList<Medicament> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(StockCaisseTable.comparatorProperty());
+        //redisplay table
+        StockCaisseTable.setItems(sortedList);
+    }
 }

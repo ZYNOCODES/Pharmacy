@@ -2,10 +2,8 @@ package com.example.ihmproject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 
 public class MedicamentDB extends Medicament{
     static Connection connection = DataBase.getConnection();
@@ -17,7 +15,8 @@ public class MedicamentDB extends Medicament{
 
         String query = "select * from Medicament";
         try {
-            statement = connection.prepareStatement(query);
+            statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            resultSet = statement.getGeneratedKeys();
             resultSet = statement.executeQuery();
             while (resultSet.next()){
                 int Med_Id = resultSet.getInt("id_Medicament");
@@ -82,5 +81,30 @@ public class MedicamentDB extends Medicament{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static ObservableList<Medicament> getSearchDate(String Med_Name){
+        ObservableList<Medicament> medicament = FXCollections.observableArrayList();
+
+        String query = "select * from Medicament where med_Name= ?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, Med_Name);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int Med_Id = resultSet.getInt("id_Medicament");
+                int med_Quantity = resultSet.getInt("med_Quantity");
+                int med_Price = resultSet.getInt("med_Price");
+                String med_Name = resultSet.getString("med_Name");
+                String med_Category = resultSet.getString("med_Category");
+                String med_Date = resultSet.getString("med_Date");
+                String med_EndDate = resultSet.getString("med_EndDate");
+                Medicament Med = new Medicament(Med_Id,med_Quantity,med_Name,med_Date,med_EndDate,med_Category,med_Price);
+                medicament.add(Med);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return medicament;
     }
 }

@@ -3,10 +3,7 @@ package com.example.ihmproject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class VenteDB extends Vente {
     static Connection connection = DataBase.getConnection();
@@ -19,7 +16,7 @@ public class VenteDB extends Vente {
 
         String query = "select * from Vente";
         try {
-            statement = connection.prepareStatement(query);
+            statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             resultSet = statement.executeQuery();
             while (resultSet.next()){
                 int med_ID = resultSet.getInt("med_ID");
@@ -93,31 +90,33 @@ public class VenteDB extends Vente {
 //            throw new RuntimeException(e);
 //        }
 //    }
+
+
 // getting the data at the expense of the vente Number
-public static ObservableList<Vente> getVente(int venteNumber){
-    ObservableList<Vente> Vente = FXCollections.observableArrayList();
+    public static ObservableList<Vente> getVente(int venteNumber){
+        ObservableList<Vente> Vente = FXCollections.observableArrayList();
 
-    String query = "select * from Vente where VenteNumber = ?";
-    try {
-        statement = connection.prepareStatement(query);
-        statement.setInt(1,venteNumber);
-        resultSet = statement.executeQuery();
-        while (resultSet.next()){
-            int med_ID = resultSet.getInt("med_ID");
-            int VenteNumber = resultSet.getInt("VenteNumber");
-            int Med_Quantity = resultSet.getInt("med_Quantity");
-            int Med_Price = resultSet.getInt("med_Price");
-            int med_Total = resultSet.getInt("med_TotalPrice");
-            String Med_Name = resultSet.getString("med_Name");
-            Vente vente = new Vente(med_ID,VenteNumber,Med_Quantity,Med_Name,med_Total,Med_Price);
-            Vente.add(vente);
+        String query = "select * from Vente where VenteNumber = ?";
+        try {
+            statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1,venteNumber);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int med_ID = resultSet.getInt("med_ID");
+                int Vente_Number = resultSet.getInt("VenteNumber");
+                int Med_Quantity = resultSet.getInt("med_Quantity");
+                int Med_Price = resultSet.getInt("med_Price");
+                int med_Total = resultSet.getInt("med_TotalPrice");
+                String Med_Name = resultSet.getString("med_Name");
+                Vente vente = new Vente(med_ID,Vente_Number,Med_Quantity,Med_Name,med_Total,Med_Price);
+                Vente.add(vente);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    }
 
-    return Vente;
-}
+        return Vente;
+    }
 
     //calculate the total price
     public int calcTotalPrice(int venteNumber){
@@ -162,6 +161,28 @@ public static ObservableList<Vente> getVente(int venteNumber){
             throw new RuntimeException(e);
         }
     }
+    //get the last vente number from DB
+    public static int lastNumber(){
+        int id = 0;
+        String query = "select venteNumber from Vente where venteNumber=(select max(venteNumber) from Vente)";
+        try {
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                id = resultSet.getInt("venteNumber");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //if the vente table in DB is null
+        if (id >= 0){
+            return id;
+        }else {
+            return id=0;
+        }
+
+    }
+
 }
 
 

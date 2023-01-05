@@ -9,6 +9,9 @@ public class Medicament {
     private String med_Category;
     private int med_Price;
 
+    public Medicament(String med_Name) {
+        this.med_Name = med_Name;
+    }
 
     public Medicament(int med_ID, int med_Quantity, String med_Name, String med_Date, String med_EndDate, String med_Category, int med_Price) {
         this.med_ID = med_ID;
