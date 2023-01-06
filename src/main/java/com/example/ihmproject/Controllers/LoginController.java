@@ -36,6 +36,7 @@ public class LoginController implements Initializable {
                         throw new RuntimeException(e);
                     }
                     primaryStage.setScene(scene);
+                    primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
                 }else if ((UsernameTextField.getText().toString().equals("Manager"))
                         && (PasswordTextField.getText().toString().equals("123"))){
@@ -48,6 +49,7 @@ public class LoginController implements Initializable {
                         throw new RuntimeException(e);
                     }
                     primaryStage.setScene(scene);
+                    primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
                 }else if ((UsernameTextField.getText().toString().equals("Seller"))
                         && (PasswordTextField.getText().toString().equals("123"))){
@@ -60,6 +62,7 @@ public class LoginController implements Initializable {
                         throw new RuntimeException(e);
                     }
                     primaryStage.setScene(scene);
+                    primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
                 }else {
                     Dialog<String> dialog = new Dialog<String>();

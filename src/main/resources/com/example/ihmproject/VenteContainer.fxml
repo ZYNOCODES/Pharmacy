@@ -24,7 +24,6 @@
                 </TableView>
                 <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="500.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#ApdateBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Edit " />
                         <Button mnemonicParsing="false" onAction="#RemoveBTN" prefHeight="32.0" prefWidth="110.0" style="-fx-background-color: white;" text="Remove">
                             <HBox.margin>
                                 <Insets left="50.0" />
