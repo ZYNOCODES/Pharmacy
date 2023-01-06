@@ -8,11 +8,11 @@
 
 <BorderPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ihmproject.Controllers.LoginController">
     <center>
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="735.0" style="-fx-background-color: #CCFFCC;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #CCFFCC;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
          <children>
-            <Pane style="-fx-background-color: #ffffff; -fx-background-radius: 100;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane style="-fx-background-color: #ffffff; -fx-background-radius: 100;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="600.0" prefWidth="700.0">
+                  <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
@@ -109,9 +109,12 @@
                                    </HBox.margin>
                                </Label>
                            </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </VBox>                     </children>
                   </HBox>
-               </children></Pane>
+               </children></AnchorPane>
          </children></AnchorPane>
     </center>
 

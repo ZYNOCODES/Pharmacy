@@ -13,6 +13,7 @@ public class SellerInterFace extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(SellerInterFace.class.getResource("SellerInterFace.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Pharmacy");
         primaryStage.show();
     }
 

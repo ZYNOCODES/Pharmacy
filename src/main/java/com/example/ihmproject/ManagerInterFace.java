@@ -12,6 +12,7 @@ public class ManagerInterFace extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(ManagerInterFace.class.getResource("ManagerInterFace.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Pharmacy");
         primaryStage.show();
     }
     public static void main(String[] args) {

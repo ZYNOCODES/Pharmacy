@@ -12,6 +12,7 @@ public class UserInterFace extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(UserInterFace.class.getResource("UserInterFace.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+        stage.setTitle("Pharmacy");
         stage.show();
     }
 
