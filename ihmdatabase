@@ -1,0 +1,225 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 10, 2023 at 10:04 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ihmdatabase`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commande`
+--
+
+CREATE TABLE `commande` (
+  `com_Date` varchar(55) NOT NULL,
+  `com_Condition` varchar(55) NOT NULL,
+  `com_Number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `commande`
+--
+
+INSERT INTO `commande` (`com_Date`, `com_Condition`, `com_Number`) VALUES
+('05-01-  2023', 'Invalide', 1),
+('05-01-  2023', 'Valide', 2),
+('05-01-  2023', 'Invalide', 3),
+('05-01-  2023', 'Invalide', 4),
+('06-01-  2023', 'Valide', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commande_items`
+--
+
+CREATE TABLE `commande_items` (
+  `id_Items` int(11) NOT NULL,
+  `med_Name` varchar(55) NOT NULL,
+  `med_Quantity` int(11) NOT NULL,
+  `com_Number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `commande_items`
+--
+
+INSERT INTO `commande_items` (`id_Items`, `med_Name`, `med_Quantity`, `com_Number`) VALUES
+(140, 'One Piece', 1145, 1),
+(141, 'Naruto', 500, 2),
+(142, 'Boruto', 281, 2),
+(144, 'csczscsz', 121, 3),
+(145, 'zsczsc', 12, 3),
+(146, 'czsszcszc', 21, 3),
+(147, 'cvdv', 200, 4),
+(148, 'ffff', 150, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicament`
+--
+
+CREATE TABLE `medicament` (
+  `id_Medicament` int(11) NOT NULL,
+  `med_Quantity` int(11) NOT NULL,
+  `med_Name` varchar(55) NOT NULL,
+  `med_Date` varchar(55) NOT NULL,
+  `med_EndDate` varchar(55) NOT NULL,
+  `med_Category` varchar(55) NOT NULL,
+  `med_Price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicament`
+--
+
+INSERT INTO `medicament` (`id_Medicament`, `med_Quantity`, `med_Name`, `med_Date`, `med_EndDate`, `med_Category`, `med_Price`) VALUES
+(18, 100, 'DOLIPRANE', '2005-11-19', '2034-07-08', 'A', 25),
+(19, 150, 'EFFERALGAN', '2007-04-28', '2029-04-14', 'B', 30),
+(20, 300, 'DAFALGAN', '2008-04-23', '2025-04-19', 'C', 10),
+(21, 5, 'LEVOTHYROX', '2013-04-07', '2033-04-09', 'A', 150),
+(22, 3, 'IMODIUM', '2014-04-26', '2032-04-10', 'A+', 1800),
+(23, 200, 'KARDEGIC', '2013-04-07', '2023-04-20', 'B', 50),
+(24, 400, 'SPASFON', '2016-04-15', '2020-04-21', 'B', 35),
+(25, 150, 'ISIMIG', '2017-05-01', '2027-04-16', 'C', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_User` int(11) NOT NULL,
+  `Username` varchar(55) NOT NULL,
+  `Password` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_User`, `Username`, `Password`) VALUES
+(1, 'Admin', '123'),
+(2, 'Manager', '123'),
+(3, 'Seller', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vente`
+--
+
+CREATE TABLE `vente` (
+  `med_Name` varchar(55) NOT NULL,
+  `med_Price` int(11) NOT NULL,
+  `med_Quantity` int(11) NOT NULL,
+  `med_TotalPrice` int(11) NOT NULL,
+  `med_ID` int(11) NOT NULL,
+  `venteNumber` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vente`
+--
+
+INSERT INTO `vente` (`med_Name`, `med_Price`, `med_Quantity`, `med_TotalPrice`, `med_ID`, `venteNumber`) VALUES
+('SPASFON', 35, 1, 35, 377, 1),
+('ISIMIG', 12, 4, 48, 378, 1),
+('IMODIUM', 1800, 1, 1800, 379, 1),
+('LEVOTHYROX', 150, 5, 750, 380, 1),
+('DAFALGAN', 10, 2, 20, 381, 1),
+('IMODIUM', 1800, 3, 5400, 382, 2),
+('SPASFON', 35, 1, 35, 383, 2),
+('EFFERALGAN', 30, 1, 30, 384, 2),
+('DOLIPRANE', 25, 1, 25, 385, 2),
+('IMODIUM', 1800, 1, 1800, 386, 2),
+('DOLIPRANE', 25, 1, 25, 387, 3),
+('KARDEGIC', 50, 1, 50, 388, 3),
+('ISIMIG', 10, 7, 70, 389, 4),
+('IMODIUM', 1600, 2, 3200, 390, 4);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `commande`
+--
+ALTER TABLE `commande`
+  ADD PRIMARY KEY (`com_Number`);
+
+--
+-- Indexes for table `commande_items`
+--
+ALTER TABLE `commande_items`
+  ADD PRIMARY KEY (`id_Items`);
+
+--
+-- Indexes for table `medicament`
+--
+ALTER TABLE `medicament`
+  ADD PRIMARY KEY (`id_Medicament`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_User`);
+
+--
+-- Indexes for table `vente`
+--
+ALTER TABLE `vente`
+  ADD PRIMARY KEY (`med_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `commande_items`
+--
+ALTER TABLE `commande_items`
+  MODIFY `id_Items` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+
+--
+-- AUTO_INCREMENT for table `medicament`
+--
+ALTER TABLE `medicament`
+  MODIFY `id_Medicament` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `vente`
+--
+ALTER TABLE `vente`
+  MODIFY `med_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
