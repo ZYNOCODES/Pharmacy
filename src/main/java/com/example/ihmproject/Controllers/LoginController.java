@@ -1,5 +1,6 @@
 package com.example.ihmproject.Controllers;
 
+import com.example.ihmproject.UserDB;
 import com.example.ihmproject.UserInterFace;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,8 +26,24 @@ public class LoginController implements Initializable {
         LoginBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if ((UsernameTextField.getText().toString().equals("Admin"))
-                        && (PasswordTextField.getText().toString().equals("123"))){
+                UserDB userDB = new UserDB();
+                int id_User = 0 ;
+                boolean empty = false;
+                if ((UsernameTextField.getText().toString().isEmpty())
+                || (PasswordTextField.getText().toString().isEmpty()) ) {
+                    Dialog<String> dialog = new Dialog<String>();
+                    dialog.setTitle("Alert");
+                    ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+                    dialog.setContentText("Username or password are empty");
+                    dialog.getDialogPane().getButtonTypes().add(type);
+                    dialog.showAndWait();
+                    empty = true;
+                }else {
+                    id_User = userDB.getUser(UsernameTextField.getText().toString(),
+                            PasswordTextField.getText().toString());
+                    empty = false;
+                }
+                if (id_User==1 && empty == false){
                     Stage primaryStage = new Stage();
                     FXMLLoader fxmlLoader = new FXMLLoader(UserInterFace.class.getResource("UserInterFace.fxml"));
                     Scene scene = null;
@@ -38,8 +55,7 @@ public class LoginController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
-                }else if ((UsernameTextField.getText().toString().equals("Manager"))
-                        && (PasswordTextField.getText().toString().equals("123"))){
+                }else if (id_User==2 && empty == false){
                     Stage primaryStage = new Stage();
                     FXMLLoader fxmlLoader = new FXMLLoader(UserInterFace.class.getResource("ManagerInterFace.fxml"));
                     Scene scene = null;
@@ -51,8 +67,7 @@ public class LoginController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
-                }else if ((UsernameTextField.getText().toString().equals("Seller"))
-                        && (PasswordTextField.getText().toString().equals("123"))){
+                }else if (id_User==3 && empty == false){
                     Stage primaryStage = new Stage();
                     FXMLLoader fxmlLoader = new FXMLLoader(UserInterFace.class.getResource("SellerInterFace.fxml"));
                     Scene scene = null;
@@ -64,14 +79,17 @@ public class LoginController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Pharmacy");
                     primaryStage.show();
-                }else {
+
+                }else if (empty == false){
                     Dialog<String> dialog = new Dialog<String>();
                     dialog.setTitle("Alert");
                     ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
-                    dialog.setContentText("Username or password incorrect");
+                    dialog.setContentText("Username or password incorrect try again");
                     dialog.getDialogPane().getButtonTypes().add(type);
                     dialog.showAndWait();
                 }
+
+
             }
         });
     }
@@ -80,3 +98,4 @@ public class LoginController implements Initializable {
 
     }
 }
+
